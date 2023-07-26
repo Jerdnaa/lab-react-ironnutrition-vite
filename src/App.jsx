@@ -1,7 +1,7 @@
 import "./App.css";
 import FoodList from "./components/FoodList";
 import { Row, Divider } from "antd";
-import Search from "./components/Search";
+
 
 function App() {
  return (

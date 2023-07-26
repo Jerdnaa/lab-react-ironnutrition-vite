@@ -1,49 +1,29 @@
 import { useState } from "react";
-import { Divider, Input, Button } from "antd";
 
 const AddFoodForm = ({addNewFood}) => {
-    const [myNameField, setMyNameField] = useState("")
-    const [myImageField, setMyImageField] = useState("")
-    const [myCaloriesField, setMyCaloriesField] = useState(0)
-    const [myServingsField, setMyServingsField] = useState(0)
-
-    const handleSubmit = event => {
+    const [myNameField, setMyNameField] = useState('');
+    const [myImageField, setMyImageField] = useState('');
+    const [myCaloriesField, setMyCaloriesField] = useState(0);
+    const [myServingsField, setMyServingsField] = useState(0);
+    const handleSumbit = event => {
         event.preventDefault()
         addNewFood(myNameField, myImageField, myCaloriesField, myServingsField)
-        setMyNameField("")
-        setMyImageField("")
+        setMyNameField('')
+        setMyImageField('')
         setMyCaloriesField(0)
         setMyServingsField(0)
     }
-
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <Divider>Add Food Entry</Divider>
-                <label>Name: 
-                    <Input type="text" name="name" value={myNameField} onChange={event => {
-                        console.log(event)
-                        setMyNameField(event.target.value)}}  />
-                </label>
-                <label>Image: 
-                    <Input type="text" name="image" value={myImageField} onChange={event => {
-                        console.log(event)
-                        setMyImageField(event.target.value)}}  />
-                </label>
-                <label>Calories: 
-                    <Input type="number" name="calories" value={myCaloriesField} onChange={event => {
-                        console.log(event)
-                        setMyCaloriesField(event.target.value)}} />
-                </label>
-                <label>Servings: 
-                    <Input type="number" name="servings"  value={myServingsField} onChange={event => {
-                        console.log(event)
-                        setMyServingsField(event.target.value)}} />
-                </label>
-                    <Button type="submit">Create</Button>
-            </form>
-        </div>
-    );
+            <div>
+                <h1>Add Food</h1>
+                <form onSubmit={handleSumbit}>
+                    <label>Name: <input type="text" name="name" value={myNameField} onChange={event => setMyNameField(event.target.value)}  /></label>
+                    <label>Image: <input type="text" name="image" value={myImageField} placeholder="www.example.com" onChange={event => setMyImageField(event.target.value)}  /></label>
+                    <label>Calories: <input type="number" name="calories" value={myCaloriesField} onChange={event => setMyCaloriesField(event.target.value)} /></label>
+                    <label>Servings: <input type="number" name="servings"  value={myServingsField} onChange={event => setMyServingsField(event.target.value)} /></label>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+     );
 }
- 
 export default AddFoodForm;
